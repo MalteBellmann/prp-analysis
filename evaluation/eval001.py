@@ -69,6 +69,7 @@ plot.legend(
 plt.show()
 plot.get_figure().savefig('./eval-out/eval001_03.pdf', format='pdf', bbox_inches='tight')
 
+'''
 plot = x_df.plot(
     y=["Alg003_RAM", "Alg003_woReset_RAM", "Alg004_RAM", "Alg004_woReset_RAM",
        "Alg001_RAM"],
@@ -82,3 +83,4 @@ plot.legend(
 )
 plt.show()
 plot.get_figure().savefig('./eval-out/eval001_04.pdf', format='pdf', bbox_inches='tight')
+'''

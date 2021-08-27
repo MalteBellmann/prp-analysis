@@ -18,6 +18,8 @@ tod_fix = "[1]"
 
 # %%
 
+FONT_SIZE = 14
+
 x = []
 
 for history_size in history_size_options:
@@ -25,8 +27,8 @@ for history_size in history_size_options:
     d = {
         "name": history_size,
 
-        "Availability": load_value(ns_5min, a, "Availability"),
-        "ExcessData": load_value(ns_5min, a, "ExcessData"),
+        "% Availability": load_value(ns_5min, a, "Availability"),
+        "% Excess Data": load_value(ns_5min, a, "ExcessData"),
     }
     x.append(d)
 
@@ -34,8 +36,10 @@ x_df = pd.DataFrame(x).set_index("name")
 
 plot = x_df.plot(
     xticks=history_size_options,
-    xlabel="size of history",
+    fontsize=FONT_SIZE,
 )
+plot.legend(loc="right", prop={'size': FONT_SIZE})
+plt.xlabel("size of history", fontsize=FONT_SIZE)
 plt.show()
 plot.get_figure().savefig('./eval-out/eval007_01.pdf', format='pdf', bbox_inches='tight')
 
@@ -46,16 +50,18 @@ for dow in dow_options:
     d = {
         "name": dow,
 
-        "Availability": load_value(ns_5min, a, "Availability"),
-        "ExcessData": load_value(ns_5min, a, "ExcessData"),
+        "% Availability": load_value(ns_5min, a, "Availability"),
+        "% Excess Data": load_value(ns_5min, a, "ExcessData"),
     }
     x.append(d)
 
 x_df = pd.DataFrame(x).set_index("name")
 
 plot = x_df.plot(
-    xlabel="day of week options"
+    fontsize=FONT_SIZE,
 )
+plot.legend(loc="right", prop={'size': FONT_SIZE})
+plt.xlabel("day of week options", fontsize=FONT_SIZE)
 plt.show()
 plot.get_figure().savefig('./eval-out/eval007_02.pdf', format='pdf', bbox_inches='tight')
 
@@ -66,15 +72,17 @@ for tod in tod_options:
     d = {
         "name": tod,
 
-        "Availability": load_value(ns_5min, a, "Availability"),
-        "ExcessData": load_value(ns_5min, a, "ExcessData"),
+        "% Availability": load_value(ns_5min, a, "Availability"),
+        "% Excess Data": load_value(ns_5min, a, "ExcessData"),
     }
     x.append(d)
 
 x_df = pd.DataFrame(x).set_index("name")
 
 plot = x_df.plot(
-    xlabel="time of day options"
+    fontsize=FONT_SIZE,
 )
+plot.legend(loc="right", prop={'size': FONT_SIZE})
+plt.xlabel("time of day options", fontsize=FONT_SIZE)
 plt.show()
 plot.get_figure().savefig('./eval-out/eval007_03.pdf', format='pdf', bbox_inches='tight')

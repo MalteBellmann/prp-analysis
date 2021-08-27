@@ -1,6 +1,5 @@
 from evaluation.helpers import load_value
 import pandas as pd
-import matplotlib.pyplot as plt
 
 # %%
 x = []
@@ -19,8 +18,8 @@ for ns in ns_options:
     }
     x.append(d)
 
-x_df = pd.DataFrame(x).set_index("Number of Nodes")
+x_df = pd.DataFrame(x)
 
 # %%
 
-print(x_df.to_latex())
+print(x_df.to_latex(float_format="%.2f %%", index=False))

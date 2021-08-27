@@ -16,19 +16,19 @@ for ns in ns_options:
     ns_name = "complexNetwork_%dNodes_normalBandwidth_1GB" % ns
 
     d = {
-        "ns": ns,
+        "Number of Nodes": ns,
 
-        "Availability_1": load_value(ns_name, a_1, "Availability"),
-        "ExcessData_1": load_value(ns_name, a_1, "ExcessData"),
+        "Availability Baseline": load_value(ns_name, a_1, "Availability"),
+        # "ExcessData_1": load_value(ns_name, a_1, "ExcessData"),
 
-        "Availability_12_24": load_value(ns_name, a_12_24, "Availability"),
-        "ExcessData_12_24": load_value(ns_name, a_12_24, "ExcessData"),
+        "Availability FOMM": load_value(ns_name, a_12_24, "Availability"),
+        "Excess Data FOMM": load_value(ns_name, a_12_24, "ExcessData"),
     }
     x.append(d)
 
-x_df = pd.DataFrame(x).set_index("ns")
+x_df = pd.DataFrame(x)
 # %%
 
 # shows algorithms also work on complex network with different node densities
 # table
-x_df
+print(x_df.to_latex(index=False, float_format="%.2f %%"))

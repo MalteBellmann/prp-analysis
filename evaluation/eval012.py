@@ -20,8 +20,8 @@ alg_names = [
 alg_name_alias = {
     "Alg001": "Baseline",
     "Alg012_(5_[1, 2, 7]_[1, 4, 24])_(0.9_PT5M_true)": "FOMM",
-    "Alg011_true_false_0.5_PT10M": "10m short pause",
-    "Alg012_(5_[1, 2, 7]_[1, 4, 24])_(0.9_PT5M_true)_Alg011_true_false_0.5_PT10M": "combination",
+    "Alg011_true_false_0.5_PT10M": "Short Pause: fixed 10 minutes",
+    "Alg012_(5_[1, 2, 7]_[1, 4, 24])_(0.9_PT5M_true)_Alg011_true_false_0.5_PT10M": "Combination",
 }
 
 ns_name_alias = {
@@ -44,15 +44,15 @@ for ns in ns_names:
         x.append({
             "Algorithm": alg_name_alias[alg],
 
-            "Availability in %": load_value(ns, alg, "Availability"),
-            "Excess Data in %": load_value(ns, alg, "ExcessData"),
+            "Availability": load_value(ns, alg, "Availability"),
+            "Excess Data": load_value(ns, alg, "ExcessData"),
         })
 
     x_df = pd.DataFrame(x)
     # print(ns)
     # print(x_df)
     print("\subfloat[" + ns_name_alias[ns] + "]{")
-    print(x_df.to_latex(index=False))
+    print(x_df.to_latex(index=False, float_format="%.2f %%"))
     print("""
     }%
   \qquad

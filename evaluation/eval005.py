@@ -25,6 +25,6 @@ x_df = pd.DataFrame(x).set_index("i", drop=True)
 
 
 plot = x_df[["Alg004_Time", "Alg004_WrongTime"]].plot(xticks=history_size_options, xlabel="size of history", )
-plot.legend(["Availability", "Excess Data"])
+plot.legend(["% Availability", "% Excess Data"])
 plt.show()
 plot.get_figure().savefig('./eval-out/eval005.pdf', format='pdf', bbox_inches='tight')

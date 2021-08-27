@@ -2,7 +2,4 @@
 
 venv
 
-eval-out/*
-
-
 !/**/.gitkeep

@@ -24,6 +24,8 @@ for preload_buffer in preload_buffer_options:
     })
 
 x_df = pd.DataFrame(x)
+x_df = x_df[x_df["topN"] == 0.9]
 
-# just use as table: either from pd to_latex or by hand
-print(x_df)
+# %%
+
+print(x_df.to_latex(float_format="%.2f %%", columns=["Preload Buffer", "Availability", "ExcessData"], index=False))

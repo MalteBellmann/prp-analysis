@@ -10,13 +10,13 @@ x = []
 for ns in ns_options:
     ns_name = "simpleNetwork_1ns_%dNodes_100MB" % ns
     x.append({
-        "nodes": ns,
-        "AccNextNode": load_value(ns_name, "Alg004_2_true_(0.9_PT24H_true)", "NextNode")
+        "Number of Nodes": ns,
+        "Accuracy@Move": load_value(ns_name, "Alg004_2_true_(0.9_PT24H_true)", "NextNode")
     })
 
-x_df = pd.DataFrame(x).set_index("nodes", drop=True)
+x_df = pd.DataFrame(x)
 
 # %%
 
 # use as table
-print(x_df.to_latex())
+print(x_df.to_latex(float_format="%.2f %%", index=False))

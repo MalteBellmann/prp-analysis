@@ -1,5 +1,3 @@
-from matplotlib import pyplot as plt
-
 from evaluation.helpers import load_value
 import pandas as pd
 
@@ -33,11 +31,13 @@ for alg in alg_options:
         "alg": alg,
 
         "Availability": load_value(ns_name, alg, "Availability"),
-        "ExcessData": load_value(ns_name, alg, "ExcessData"),
+        "Excess Data": load_value(ns_name, alg, "ExcessData"),
     }
     x.append(d)
 
 x_df = pd.DataFrame(x)
 
-# present as table
-print(x_df)
+q = [i == "Alg001" or i.startswith("Alg011_false") for i in x_df['alg']]
+x_df_2 = x_df[q]
+
+print(x_df_2.to_latex(index=False, float_format="%.2f %%"))

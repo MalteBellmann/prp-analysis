@@ -23,6 +23,7 @@ for alg in alg_names:
     csv = pd.read_csv(STATS_DIR + ns_name + "/" + alg + "/AvailabilityOverTime/" + user + ".csv",
                       parse_dates=["time"])
     csv.set_index("time", inplace=True)
+    csv["availability"] = csv["availability"] * 100
     csv.rename(columns={"availability": alg}, inplace=True)
 
     if x_df is None:
