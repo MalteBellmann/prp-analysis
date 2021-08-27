@@ -21,12 +21,12 @@ def get_topN_label(topN):
 x = []
 
 p = {
-    "fix topN of 1 + null extension": (20, -7),
-    "fix topN of 2 + null extension": (-150, 12),
-    "dynamic topN of 80% + null extension": (-200, 0),
-    "dynamic topN of 90% + null extension": (-195, 25),
-    "dynamic topN of 95% + null extension": (-200, 2),
-    "dynamic topN of 98% + null extension": (-200, 5),
+    "fix topN of 1 + EoT extension": (20, -7),
+    "fix topN of 2 + EoT extension": (-150, 12),
+    "dynamic topN of 80% + EoT extension": (-200, 0),
+    "dynamic topN of 90% + EoT extension": (-195, 25),
+    "dynamic topN of 95% + EoT extension": (-200, 2),
+    "dynamic topN of 98% + EoT extension": (-200, 5),
 
     "fix topN of 1": (-70, 0),
     "fix topN of 2": (-70, -3),
@@ -37,10 +37,10 @@ p = {
 }
 
 for topN in topN_options:
-    label = get_topN_label(topN) + " + null extension"
+    label = get_topN_label(topN) + " + EoT extension"
     x.append({
         "topN": float(topN),
-        "null": True,
+        "EoT": True,
         "Time": load_value(ns_5min, "Alg004_2_true_(%s_PT24H_true)" % topN, "Availability"),
         "WrongTime": load_value(ns_5min, "Alg004_2_true_(%s_PT24H_true)" % topN, "ExcessData"),
         "Label": (label, p[label]),
@@ -48,7 +48,7 @@ for topN in topN_options:
     label = get_topN_label(topN)
     x.append({
         "topN": float(topN),
-        "null": False,
+        "EoT": False,
         "Time": load_value(ns_5min, "Alg004_2_true_(%s_PT24H_false)" % topN, "Availability"),
         "WrongTime": load_value(ns_5min, "Alg004_2_true_(%s_PT24H_false)" % topN, "ExcessData"),
         "Label": (label, p[label]),
